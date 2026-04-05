@@ -19,13 +19,14 @@ boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         console.log("box clicked");
         if(turn0){
-            box.innerText="0";
             box.style.color="#DC143C";
+            box.innerText="0";
             turn0=false;
             count++;
         }
         else{
             box.innerText="X";
+            box.style.color="264027";
             turn0=true;
             count++;
         }
@@ -40,12 +41,15 @@ const checkWinner = ()=>{
         let pos3val = boxes[pattern[2]].innerText;
         if(pos1val!="" && pos1val===pos2val && pos2val===pos3val){
             console.log("Winner ", pos1val);
-            alert("Winner is "+pos1val);
+            winner(pos1val);
             disableBoxes();
             newGame();
         }
         else if(count==9){
-            alert("Match is Drawn");
+            won.innerText=`Match is Drawn`;
+            won.classList.add("winner");
+            won.classList.remove("hidden");
+            newGame();
         }
     }
 }
@@ -67,6 +71,15 @@ const resetGame=()=>{
     }
     reset.classList.add("hidden");
     count=0;
+    won.classList.add("hidden");
 }
 
 reset.addEventListener("click",resetGame);
+
+let won = document.querySelector("#winner");
+
+let winner = (val)=>{
+    won.innerText=`Winner is ${val}`;
+    won.classList.remove("hidden");
+    won.classList.add("winner");
+}

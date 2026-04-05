@@ -48,3 +48,9 @@ body{
 .hidden{
     display:none;
 }
+
+.winner{
+    color: rgb(42, 203, 206);
+    padding-top:50px;
+    font-size : 43px;
+}
