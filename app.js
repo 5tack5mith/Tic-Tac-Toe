@@ -34,6 +34,7 @@ boxes.forEach((box)=>{
         checkWinner();
     });
 });
+let draw =true;
 const checkWinner = ()=>{
     for(let pattern of winPatterns){
         let pos1val = boxes[pattern[0]].innerText;
@@ -44,13 +45,14 @@ const checkWinner = ()=>{
             winner(pos1val);
             disableBoxes();
             newGame();
+            draw=false;
         }
-        else if(count==9){
-            won.innerText=`Match is Drawn`;
-            won.classList.add("winner");
-            won.classList.remove("hidden");
-            newGame();
-        }
+    }
+    if(count==9 && draw===true){
+        won.innerText=`Match is Drawn`;
+        won.classList.add("winner");
+        won.classList.remove("hidden");
+        newGame();
     }
 }
 
