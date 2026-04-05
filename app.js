@@ -19,14 +19,14 @@ boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         console.log("box clicked");
         if(turn0){
-            box.style.color="#DC143C";
+            box.style.color="#bb092d";
             box.innerText="0";
             turn0=false;
             count++;
         }
         else{
             box.innerText="X";
-            box.style.color="264027";
+            box.style.color="#264027";
             turn0=true;
             count++;
         }
@@ -46,6 +46,7 @@ const checkWinner = ()=>{
             disableBoxes();
             newGame();
             draw=false;
+            return ;
         }
     }
     if(count==9 && draw===true){
@@ -73,6 +74,8 @@ const resetGame=()=>{
     }
     reset.classList.add("hidden");
     count=0;
+    turn0 = true;
+    draw = true;
     won.classList.add("hidden");
 }
 
